@@ -9,11 +9,13 @@ import {
   Twitter,
   Linkedin,
   Search,
-  ChevronDown,
-  
-} from "lucide-react";
+  ChevronDown,} 
+
+from "lucide-react";
 import logo from "@/assets/nexus-logo.png";
 import { ExperientialLearningPage } from "@/components/experiential-learning-page";
+import webby from "@/assets/Webby.png";
+import chabu from "@/assets/Chabu C Kangale Passport Photo.jpg";
 
 const pages = [
   "Home",
@@ -37,12 +39,16 @@ const experientialLearningItems = [
 ];
 
 export function WireframeOne() {
-  const [currentPage, setCurrentPage] = useState('Home');
-const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-const [dropdownOpen, setDropdownOpen] = useState(false);
-const [experientialDropdownOpen, setExperientialDropdownOpen] = useState(false);
-const [dropdownTimeout, setDropdownTimeout] = useState<NodeJS.Timeout | null>(null);
-const [experientialDropdownTimeout, setExperientialDropdownTimeout] = useState<NodeJS.Timeout | null>(null);
+  const [currentPage, setCurrentPage] = useState("Home");
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [experientialDropdownOpen, setExperientialDropdownOpen] =
+    useState(false);
+  const [dropdownTimeout, setDropdownTimeout] = useState<NodeJS.Timeout | null>(
+    null
+  );
+  const [experientialDropdownTimeout, setExperientialDropdownTimeout] =
+    useState<NodeJS.Timeout | null>(null);
 
   return (
     <div className="bg-white">
@@ -151,7 +157,7 @@ const [experientialDropdownTimeout, setExperientialDropdownTimeout] = useState<N
 
               {dropdownOpen && (
                 <div
-                  className="absolute top-full left-0 mt-1 bg-white shadow-lg border-2 min-w-[200px] z-50"
+                  className="absolute top-full left-0 mt-1 bg-white shadow-lg border-2 min-w-[100px] z-50"
                   style={{ borderColor: "#E4A261" }}
                   onMouseEnter={() => {
                     if (dropdownTimeout) {
@@ -876,6 +882,29 @@ function AboutPage() {
 }
 
 function TeamPage() {
+  const [selectedMember, setSelectedMember] = useState<number | null>(null);
+
+  const teamMembers = [
+    {
+      name: "Chabu Kangale",
+      title: "Co Founder & Director",
+      photo: chabu,
+      bio: "Mr. Chabu Kangale is a Director at Nexus Health Foundation. A development specialist with over 26 years of experience, including 22 years in public health and 18 at the senior management level. He has served in leadership roles such as Country Director for the International HIV/AIDS Alliance in Zambia and Executive Director for INERELA+ in South Africa.\nCurrently, as Chief of Party at PATH for the PMI REACH Malaria project, he oversees major donor-funded initiatives. His expertise spans program management, strategic planning, M&E, and providing technical assistance to governments and NGOs. He holds a Bachelor of Laws and advanced degrees in theology and development.",
+    },
+    {
+      name: "Marie-Reine Rutagwera",
+      title: "Co Founder & Director",
+      photo: "",
+      bio: "Marie-Reine Rutagwera is a seasoned Public Health Specialist with over 15 years of experience. Her expertise spans monitoring, evaluation, research, and learning (MERL), stakeholder engagement, malaria case management, community health systems, digital health innovations, and donor reporting. She has held key leadership roles at PATH, including Deputy MEL Director for the PMI REACH Malaria Global Project, Strategic Information Advisor for PMI PAMO Plus, and Senior Malaria Surveillance Specialist for MACEPA in Zambia. Reine has worked extensively with Ministries of Health and partners to institutionalize data use practices, improve data quality and visualization, and expand digital health platforms such as DHIS2 and Tableau.\nEarlier in her career, she taught Medical Microbiology, Biostatistics, Epidemiology, and Research Methods at Evelyn Hone College of Health Sciences. Passionate about mentorship and fostering a culture of learning, she is committed to building local capacity and creating pathways for students and young professionals to gain hands-on experience through internships and applied learning opportunities—bridging classroom knowledge with real-world practice to enhance healthcare access, improve quality and drive better health outcome.",
+    },
+    {
+      name: "Dr. Webby Phiri",
+      title: "Co-founder & Director",
+      photo: webby,
+      bio: "Dr. Webby Phiri is the Director and Company Secretary of the Nexus Health Foundation, bringing over a decade of leadership in clinical and public health program management.\n\nPreviously, as Deputy Chief of Party for PATH, he provided leadership on the operational and strategic implementation of the US President's Malaria Initiative (PMI)-funded PAMO Plus project. His distinguished career with the Zambian Ministry of Health includes roles as District Health Director for Chikankata, Medical Officer in Charge at Kafue Gorge Hospital, and clinical residencies at the University Teaching Hospital and Chikankata Mission Hospital.\n\nDr. Phiri's expertise is underpinned by a robust academic foundation. He is a Chevening Scholar, having earned an MSc in Paediatrics and Child Health from University College London (UCL). He also holds an MBA from the University of Lusaka, combining deep clinical knowledge with strategic business and management acumen. His professional focus integrates public health, healthcare economics, finance, policy, and global development, driving his commitment to advancing health systems and infectious disease control.",
+    },
+  ];
+
   return (
     <div className="space-y-6">
       <div
@@ -894,28 +923,33 @@ function TeamPage() {
           Team
         </h2>
         <div className="flex justify-center items-end gap-8 flex-wrap max-w-5xl mx-auto">
-          {[
-            { name: "John Doe", title: "Chief Executive Officer" },
-            { name: "Jane Smith", title: "Director of Operations" },
-            { name: "Michael Johnson", title: "Head of Programs" },
-          ].map((member, i) => (
+          {teamMembers.map((member, i) => (
             <div key={i} className="text-center">
               <div
-                className="w-64 h-64 border-8 rounded-full flex items-center justify-center mb-4"
+                className="w-64 h-64 rounded-full flex items-center justify-center mb-4 overflow-hidden cursor-pointer hover:opacity-90 transition-opacity"
                 style={{
-                  borderColor:
-                    i === 0 ? "#E4A261" : i === 1 ? "#3A3A3A" : "#F06565",
-                  backgroundColor: "#F8F9FA",
+                  boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
                 }}
+                onClick={() => setSelectedMember(i)}
               >
-                <span className="text-sm" style={{ color: "#3A3A3A" }}>
-                  Team Photo {i + 1}
-                </span>
+                <img
+                  src={member.photo}
+                  alt={member.name}
+                  className="w-full h-full object-cover object-top"
+                />
               </div>
-              <p className="font-bold mb-2" style={{ color: "#3A3A3A" }}>
+              <p
+                className="font-bold mb-2 cursor-pointer hover:opacity-80 transition-opacity"
+                style={{ color: "#3A3A3A" }}
+                onClick={() => setSelectedMember(i)}
+              >
                 {member.name}
               </p>
-              <p className="text-sm" style={{ color: "#3A3A3A" }}>
+              <p
+                className="text-sm cursor-pointer hover:opacity-80 transition-opacity"
+                style={{ color: "#3A3A3A" }}
+                onClick={() => setSelectedMember(i)}
+              >
                 {member.title}
               </p>
             </div>
@@ -923,59 +957,74 @@ function TeamPage() {
         </div>
       </div>
 
-      {/* Governance & Structure */}
-      <div className="bg-white border-2 p-6" style={{ borderColor: "#E4A261" }}>
+      {/* Bio Modal */}
+      {selectedMember !== null && (
         <div
-          className="border-b-2 pb-3 mb-4"
-          style={{ borderColor: "#E4A261" }}
+          className="fixed inset-0 flex items-center justify-center z-50 px-4"
+          style={{
+            backgroundColor: "rgba(0, 0, 0, 0.4)",
+            paddingTop: "57px",
+            paddingBottom: "57px",
+          }}
+          onClick={() => setSelectedMember(null)}
         >
-          <h3 className="text-lg font-bold" style={{ color: "#3A3A3A" }}>
-            Governance & Structure
-          </h3>
-        </div>
-        <div className="grid md:grid-cols-2 gap-6">
-          <div>
-            <h4 className="text-sm font-bold mb-3" style={{ color: "#3A3A3A" }}>
-              Board of Directors
-            </h4>
-            <div className="space-y-2">
-              {[
-                "Dr. Lorem Ipsum",
-                "Prof. Dolor Sit",
-                "Ms. Consectetur Adipiscing",
-                "Mr. Elit Sed",
-              ].map((name, i) => (
-                <div
-                  key={i}
-                  className="p-2 border-b"
-                  style={{ borderColor: "#F8F9FA" }}
-                >
-                  <p
-                    className="text-sm font-medium"
-                    style={{ color: "#3A3A3A" }}
-                  >
-                    {name}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div>
-            <h4 className="text-sm font-bold mb-3" style={{ color: "#3A3A3A" }}>
-              Organizational Structure
-            </h4>
-            <div
-              className="h-40 border border-dashed flex items-center justify-center p-4"
-              style={{ borderColor: "#E4A261", backgroundColor: "#F8F9FA" }}
+          <div
+            className="bg-white rounded-lg max-w-4xl w-full p-8 relative"
+            style={{
+              borderLeft: `4px solid #3CB371`,
+              maxHeight: "calc(100vh - 114px)",
+              overflowY: "auto",
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setSelectedMember(null)}
+              className="absolute top-4 right-4 text-2xl font-bold hover:opacity-70 transition-opacity"
+              style={{ color: "#3A3A3A" }}
             >
-              <p className="text-xs text-center" style={{ color: "#3A3A3A" }}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                eiusmod tempor incididunt.
-              </p>
+              ×
+            </button>
+
+            <div className="flex flex-col md:flex-row gap-6 items-center md:items-start">
+              <div
+                className="rounded-full flex-shrink-0 overflow-hidden"
+                style={{
+                  width: "128px",
+                  height: "128px",
+                  boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+                }}
+              >
+                <img
+                  src={teamMembers[selectedMember].photo}
+                  alt={teamMembers[selectedMember].name}
+                  className="w-full h-full object-cover object-top"
+                />
+              </div>
+
+              <div className="flex-1">
+                <h3
+                  className="text-2xl font-bold mb-2"
+                  style={{ color: "#3A3A3A" }}
+                >
+                  {teamMembers[selectedMember].name}
+                </h3>
+                <p
+                  className="text-sm font-semibold mb-4"
+                  style={{ color: "#3CB371" }}
+                >
+                  {teamMembers[selectedMember].title}
+                </p>
+                <p
+                  className="text-sm leading-relaxed whitespace-pre-line"
+                  style={{ color: "#3A3A3A" }}
+                >
+                  {teamMembers[selectedMember].bio}
+                </p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

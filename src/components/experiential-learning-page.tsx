@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { ChevronRight, ChevronLeft, Star, ChevronDown } from "lucide-react";
 import logo from "@/assets/nexus-logo.png";
+import chw from "@/assets/community-health-worker.jpg";
+import training_program from "@/assets/training-programs.jpg";
 
 export function ExperientialLearningPage() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
@@ -130,7 +132,7 @@ export function ExperientialLearningPage() {
             </div>
             <div className="relative h-[400px] rounded-lg overflow-hidden shadow-xl">
               <img
-                src="https://images.unsplash.com/photo-1763865778196-e3f2e3dbd425?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21tdW5pdHklMjBoZWFsdGglMjB3b3JrZXJzJTIwZ3JvdXB8ZW58MXx8fHwxNzY4Mzg4OTk4fDA&ixlib=rb-4.1.0&q=80&w=1080"
+                src={chw}
                 alt="Community health workers"
                 className="w-full h-full object-cover"
               />
@@ -157,7 +159,7 @@ export function ExperientialLearningPage() {
             <div className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all cursor-pointer group flex flex-col">
               <div className="relative h-64 overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1637743408313-c9d5e869d9db?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoZWFsdGhjYXJlJTIwdHJhaW5pbmclMjB3b3Jrc2hvcHxlbnwxfHx8fDE3NjgzODg5OTl8MA&ixlib=rb-4.1.0&q=80&w=1080"
+                  src={training_program}
                   alt="Training Programs"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
@@ -355,7 +357,7 @@ export function ExperientialLearningPage() {
             <div className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all cursor-pointer group flex flex-col">
               <div className="relative h-64 overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxpbnRlcm5zaGlwJTIwb2ZmaWNlJTIwd29ya3xlbnwxfHx8fDE3MzY4ODU3ODl8MA&ixlib=rb-4.1.0&q=80&w=1080"
+                  src="https://images.unsplash.com/photo-1710093072228-8c3129f27357?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                   alt="Internship Programs"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
